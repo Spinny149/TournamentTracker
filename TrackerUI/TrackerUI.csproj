@@ -64,6 +64,12 @@
     <Compile Include="CreateTournamentForm.Designer.cs">
       <DependentUpon>CreateTournamentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TouramentDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TouramentDashboardForm.Designer.cs">
+      <DependentUpon>TouramentDashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TournamentViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TouramentDashboardForm.resx">
+      <DependentUpon>TouramentDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TournamentViewerForm.resx">
       <DependentUpon>TournamentViewerForm.cs</DependentUpon>
     </EmbeddedResource>
