@@ -42,6 +42,7 @@
             this.teamTwoSocreValue = new System.Windows.Forms.TextBox();
             this.versusLablel = new System.Windows.Forms.Label();
             this.scoreButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // headerLable
@@ -80,7 +81,7 @@
             // roundDropDown
             // 
             this.roundDropDown.FormattingEnabled = true;
-            this.roundDropDown.Location = new System.Drawing.Point(105, 84);
+            this.roundDropDown.Location = new System.Drawing.Point(114, 84);
             this.roundDropDown.Name = "roundDropDown";
             this.roundDropDown.Size = new System.Drawing.Size(277, 38);
             this.roundDropDown.TabIndex = 3;
@@ -237,5 +238,6 @@
         private System.Windows.Forms.TextBox teamTwoSocreValue;
         private System.Windows.Forms.Label versusLablel;
         private System.Windows.Forms.Button scoreButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
