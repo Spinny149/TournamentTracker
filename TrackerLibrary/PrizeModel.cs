@@ -38,5 +38,32 @@ namespace TrackerLibrary
         public double PrizePercentage { get; set; }
 
 
+        public PrizeModel()
+        {
+
+        }
+
+        public PrizeModel(string placeName, string placeNumber, string prizeAmount, string prizePercentage)
+        {
+            PlaceName = placeName;
+
+            int placeNumbervalue = 0;
+            int.TryParse(placeNumber, out placeNumbervalue);
+            PlaceNumber = placeNumbervalue;
+
+
+            decimal prizeAmountValue = 0;
+            decimal.TryParse(prizeAmount, out prizeAmountValue);
+            PrizeAmount = prizeAmountValue;
+
+            double prizePercentageValue = 0;
+            double.TryParse(prizePercentage, out prizePercentageValue);
+            PrizePercentage = prizePercentageValue;
+
+
+
+        }
+
+
     }
 }

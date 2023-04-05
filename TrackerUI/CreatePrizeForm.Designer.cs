@@ -33,9 +33,9 @@
             this.placeNumberLable = new System.Windows.Forms.Label();
             this.placeNameValue = new System.Windows.Forms.TextBox();
             this.placeNameLable = new System.Windows.Forms.Label();
-            this.priceAmountValue = new System.Windows.Forms.TextBox();
+            this.prizeAmountValue = new System.Windows.Forms.TextBox();
             this.priceAmountLable = new System.Windows.Forms.Label();
-            this.pricePrecentageValue = new System.Windows.Forms.TextBox();
+            this.prizePrecentageValue = new System.Windows.Forms.TextBox();
             this.pricePrecentageLable = new System.Windows.Forms.Label();
             this.orLable = new System.Windows.Forms.Label();
             this.createPrizeButton = new System.Windows.Forms.Button();
@@ -88,12 +88,12 @@
             this.placeNameLable.TabIndex = 14;
             this.placeNameLable.Text = "Place Name";
             // 
-            // priceAmountValue
+            // prizeAmountValue
             // 
-            this.priceAmountValue.Location = new System.Drawing.Point(228, 170);
-            this.priceAmountValue.Name = "priceAmountValue";
-            this.priceAmountValue.Size = new System.Drawing.Size(189, 35);
-            this.priceAmountValue.TabIndex = 17;
+            this.prizeAmountValue.Location = new System.Drawing.Point(228, 170);
+            this.prizeAmountValue.Name = "prizeAmountValue";
+            this.prizeAmountValue.Size = new System.Drawing.Size(189, 35);
+            this.prizeAmountValue.TabIndex = 17;
             // 
             // priceAmountLable
             // 
@@ -106,12 +106,12 @@
             this.priceAmountLable.TabIndex = 16;
             this.priceAmountLable.Text = "Price Amount";
             // 
-            // pricePrecentageValue
+            // prizePrecentageValue
             // 
-            this.pricePrecentageValue.Location = new System.Drawing.Point(228, 292);
-            this.pricePrecentageValue.Name = "pricePrecentageValue";
-            this.pricePrecentageValue.Size = new System.Drawing.Size(189, 35);
-            this.pricePrecentageValue.TabIndex = 19;
+            this.prizePrecentageValue.Location = new System.Drawing.Point(228, 292);
+            this.prizePrecentageValue.Name = "prizePrecentageValue";
+            this.prizePrecentageValue.Size = new System.Drawing.Size(189, 35);
+            this.prizePrecentageValue.TabIndex = 19;
             // 
             // pricePrecentageLable
             // 
@@ -159,9 +159,9 @@
             this.ClientSize = new System.Drawing.Size(436, 432);
             this.Controls.Add(this.createPrizeButton);
             this.Controls.Add(this.orLable);
-            this.Controls.Add(this.pricePrecentageValue);
+            this.Controls.Add(this.prizePrecentageValue);
             this.Controls.Add(this.pricePrecentageLable);
-            this.Controls.Add(this.priceAmountValue);
+            this.Controls.Add(this.prizeAmountValue);
             this.Controls.Add(this.priceAmountLable);
             this.Controls.Add(this.placeNameValue);
             this.Controls.Add(this.placeNameLable);
@@ -185,9 +185,9 @@
         private System.Windows.Forms.Label placeNumberLable;
         private System.Windows.Forms.TextBox placeNameValue;
         private System.Windows.Forms.Label placeNameLable;
-        private System.Windows.Forms.TextBox priceAmountValue;
+        private System.Windows.Forms.TextBox prizeAmountValue;
         private System.Windows.Forms.Label priceAmountLable;
-        private System.Windows.Forms.TextBox pricePrecentageValue;
+        private System.Windows.Forms.TextBox prizePrecentageValue;
         private System.Windows.Forms.Label pricePrecentageLable;
         private System.Windows.Forms.Label orLable;
         private System.Windows.Forms.Button createPrizeButton;
