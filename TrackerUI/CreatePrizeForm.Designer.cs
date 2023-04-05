@@ -94,6 +94,7 @@
             this.prizeAmountValue.Name = "prizeAmountValue";
             this.prizeAmountValue.Size = new System.Drawing.Size(189, 35);
             this.prizeAmountValue.TabIndex = 17;
+            this.prizeAmountValue.Text = "0";
             // 
             // priceAmountLable
             // 
@@ -112,6 +113,7 @@
             this.prizePrecentageValue.Name = "prizePrecentageValue";
             this.prizePrecentageValue.Size = new System.Drawing.Size(189, 35);
             this.prizePrecentageValue.TabIndex = 19;
+            this.prizePrecentageValue.Text = "0";
             // 
             // pricePrecentageLable
             // 
