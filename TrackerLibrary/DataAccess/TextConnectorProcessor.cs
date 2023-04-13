@@ -111,7 +111,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                     t.TeamMembers.Add(people.Where(x => x.Id == int.Parse(Id)).First());
 
                 }
-
+                output.Add(t);
             }
 
             return output;

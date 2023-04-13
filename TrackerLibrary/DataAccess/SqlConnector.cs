@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TrackerLibrary.Models;
@@ -62,7 +63,7 @@ namespace TrackerLibrary.DataAccess
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var p = new DynamicParameters();
-                p.Add("@TeamName", model.TeamName);                
+                p.Add("@TeamName", model.TeamName);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spTeam_Insert", p, commandType: CommandType.StoredProcedure);
@@ -90,7 +91,27 @@ namespace TrackerLibrary.DataAccess
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                output = connection.Query<PersonModel>("spPeople_GetAll").ToList();
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            List<TeamModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<TeamModel>("dbo.spTeam_GetAll").ToList();
+
+                foreach (TeamModel tm in output)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", tm.Id);
+
+                    tm.TeamMembers = connection.Query<PersonModel>("spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
+                }
             }
 
             return output;
