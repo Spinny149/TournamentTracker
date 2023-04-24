@@ -15,6 +15,7 @@ namespace TrackerLibrary.Models
         /// The unique identifier for the matchup
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Represents teams that were involved in this match
         /// </summary>
