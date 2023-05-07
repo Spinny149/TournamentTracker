@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.headerLable = new System.Windows.Forms.Label();
-            this.hournamentName = new System.Windows.Forms.Label();
+            this.tournamentName = new System.Windows.Forms.Label();
             this.roundLable = new System.Windows.Forms.Label();
             this.roundDropDown = new System.Windows.Forms.ComboBox();
             this.unplayedOnlyCheckbox = new System.Windows.Forms.CheckBox();
@@ -56,16 +56,16 @@
             this.headerLable.TabIndex = 0;
             this.headerLable.Text = "Tournament:";
             // 
-            // hournamentName
+            // tournamentName
             // 
-            this.hournamentName.AutoSize = true;
-            this.hournamentName.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hournamentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.hournamentName.Location = new System.Drawing.Point(232, 9);
-            this.hournamentName.Name = "hournamentName";
-            this.hournamentName.Size = new System.Drawing.Size(150, 50);
-            this.hournamentName.TabIndex = 1;
-            this.hournamentName.Text = "<none>";
+            this.tournamentName.AutoSize = true;
+            this.tournamentName.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tournamentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.tournamentName.Location = new System.Drawing.Point(232, 9);
+            this.tournamentName.Name = "tournamentName";
+            this.tournamentName.Size = new System.Drawing.Size(150, 50);
+            this.tournamentName.TabIndex = 1;
+            this.tournamentName.Text = "<none>";
             // 
             // roundLable
             // 
@@ -85,6 +85,7 @@
             this.roundDropDown.Name = "roundDropDown";
             this.roundDropDown.Size = new System.Drawing.Size(277, 38);
             this.roundDropDown.TabIndex = 3;
+            this.roundDropDown.SelectedIndexChanged += new System.EventHandler(this.roundDropDown_SelectedIndexChanged);
             // 
             // unplayedOnlyCheckbox
             // 
@@ -108,6 +109,7 @@
             this.matchupListBox.Name = "matchupListBox";
             this.matchupListBox.Size = new System.Drawing.Size(361, 272);
             this.matchupListBox.TabIndex = 5;
+            this.matchupListBox.SelectedIndexChanged += new System.EventHandler(this.matchupListBox_SelectedIndexChanged);
             // 
             // teamOneName
             // 
@@ -211,7 +213,7 @@
             this.Controls.Add(this.unplayedOnlyCheckbox);
             this.Controls.Add(this.roundDropDown);
             this.Controls.Add(this.roundLable);
-            this.Controls.Add(this.hournamentName);
+            this.Controls.Add(this.tournamentName);
             this.Controls.Add(this.headerLable);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
@@ -225,7 +227,7 @@
         #endregion
 
         private System.Windows.Forms.Label headerLable;
-        private System.Windows.Forms.Label hournamentName;
+        private System.Windows.Forms.Label tournamentName;
         private System.Windows.Forms.Label roundLable;
         private System.Windows.Forms.ComboBox roundDropDown;
         private System.Windows.Forms.CheckBox unplayedOnlyCheckbox;
