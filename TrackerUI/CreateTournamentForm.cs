@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -133,14 +134,14 @@ namespace TrackerUI
             //Wireup matchup
             TournamentLogic.CreateRounds(tm);
 
-
-
-
             //Create tournament entries
             //Create all of the prizes entries
             //Create all of team entries
             GlobalConfig.Connection.CreateTournament(tm);
-            
+
+            TournamentViewerForm frm = new TournamentViewerForm(tm);
+            frm.Show();
+            this.Close();
         }
     }
 }
