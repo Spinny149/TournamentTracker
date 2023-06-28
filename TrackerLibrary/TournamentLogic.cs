@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security;
@@ -56,12 +57,12 @@ namespace TrackerLibrary
 
             if ( endingRound > startingRound)
             {
-                AlertUsersToNewRound(model);
+                model.AlertUsersToNewRound();
             }
 
         }
 
-        private static void AlertUsersToNewRound(this TournamentModel model)
+        public static void AlertUsersToNewRound(this TournamentModel model)
         {
             int currenRoundNumber = model.CheckCurrentRound();
             List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currenRoundNumber).First();
@@ -124,7 +125,97 @@ namespace TrackerLibrary
                 {
                     output += 1;
                 }
+                else
+                {
+                    return output;
+                }
             }
+            // Tournament complete
+            CompleteTournament(model);
+
+            return output - 1;
+        }
+
+        private static void CompleteTournament(TournamentModel model)
+        {
+            GlobalConfig.Connection.CompleteTournament(model);
+            TeamModel winners = model.Rounds.Last().First().Winner;
+            TeamModel runnerUp = model.Rounds.Last().First().Entries.Where(x => x.TeamCompeting != winners).First().TeamCompeting;
+
+            decimal winnerPrice = 0;
+            decimal runnerUpPrice = 0;
+
+
+            if (model.Prizes.Count > 0)
+            {
+                decimal totalincome = model.EnteredTeams.Count * model.EntryFee;
+
+                PrizeModel firstPlacePrize = model.Prizes.Where(x => x.PlaceNumber == 1).FirstOrDefault();
+                PrizeModel secondPlacePrize = model.Prizes.Where(x => x.PlaceNumber == 2).FirstOrDefault();
+
+                if (firstPlacePrize != null)
+                {
+                    winnerPrice = firstPlacePrize.CalculatePrizePayout(totalincome);
+                }
+                if (secondPlacePrize != null)
+                {
+                    runnerUpPrice = secondPlacePrize.CalculatePrizePayout(totalincome);
+                }
+            }
+
+            //Send email to all touranement
+            string subject = "";
+            StringBuilder body = new StringBuilder();
+
+
+            subject = $"In { model.TournamentName }, { winners.TeamName } has won!";
+
+            body.AppendLine("<h1>We have a winner!</h1>");
+            body.Append("<p>Congratulations to our winner on freat tournament.</p>");
+            body.Append("<br />");
+
+            if (winnerPrice > 0)
+            {
+                body.AppendLine($"<p>{winners.TeamName} will receive {winnerPrice}</p>");
+            }
+            if (runnerUpPrice > 0)
+            {
+                body.AppendLine($"<p>{runnerUp.TeamName} will receive {runnerUpPrice}</p>");
+            }
+            body.AppendLine("<p>Thx for grat tournament</p>");
+            body.AppendLine("~tournament tracker");
+
+            List<string> bcc = new List<string>();
+
+            foreach (TeamModel t in model.EnteredTeams)
+            {
+                foreach (PersonModel p in t.TeamMembers)
+                {
+                    if (p.EmailAddress.Length > 0)
+                    {
+                        bcc.Add(p.EmailAddress); 
+                    }
+                }
+            }
+
+            EmialLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
+
+            model.CompleteTournament();
+        }
+
+        private static decimal CalculatePrizePayout(this PrizeModel prize, decimal totalIncome)
+        {
+            decimal output = 0;
+
+            if (prize.PrizeAmount > 0)
+            {
+                output = prize.PrizeAmount;
+            }
+            else
+            {
+                output = Decimal.Multiply(totalIncome, Convert.ToDecimal(prize.PrizePercentage / 100));
+            }
+
             return output;
         }
 
