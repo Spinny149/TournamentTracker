@@ -112,7 +112,7 @@ namespace TrackerLibrary
 
             to = p.EmailAddress;
 
-            EmialLogic.SendEmail(to, subject, body.ToString());
+            //EmialLogic.SendEmail(to, subject, body.ToString());
         }
 
         private static int CheckCurrentRound(this TournamentModel model)
@@ -198,7 +198,7 @@ namespace TrackerLibrary
                 }
             }
 
-            EmialLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
+            //EmialLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
 
             model.CompleteTournament();
         }
