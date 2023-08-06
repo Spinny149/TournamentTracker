@@ -18,9 +18,9 @@ namespace TrackerWPFUI.Views
     /// <summary>
     /// Interaction logic for CreatePrizeFormView.xaml
     /// </summary>
-    public partial class CreatePrizeFormView : UserControl
+    public partial class CreatePrizeView : UserControl
     {
-        public CreatePrizeFormView()
+        public CreatePrizeView()
         {
             InitializeComponent();
         }

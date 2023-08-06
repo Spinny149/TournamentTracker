@@ -9,7 +9,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerWPFUI.ViewModels
 {
-    public class CreatePrizeFormViewModel : Screen
+    public class CreatePrizeViewModel : Screen
     {
 		private int _placeNumber;
         private string _placeName;

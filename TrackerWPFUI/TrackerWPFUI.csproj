@@ -74,10 +74,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="ViewModels\CreatePrizeFormViewModel.cs" />
+    <Compile Include="ViewModels\CreatePrizeViewModel.cs" />
+    <Compile Include="ViewModels\CreateTeamViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\CreatePrizeFormView.xaml.cs">
-      <DependentUpon>CreatePrizeFormView.xaml</DependentUpon>
+    <Compile Include="Views\CreatePrizeView.xaml.cs">
+      <DependentUpon>CreatePrizeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateTeamView.xaml.cs">
+      <DependentUpon>CreateTeamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -86,7 +90,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\CreatePrizeFormView.xaml">
+    <Page Include="Views\CreatePrizeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateTeamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
