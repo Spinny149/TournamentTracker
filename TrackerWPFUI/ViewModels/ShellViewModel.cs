@@ -18,7 +18,7 @@ namespace TrackerWPFUI.ViewModels
 
             _existingTournaments = new BindableCollection<TournamentModel>(GlobalConfig.Connection.GetTournament_All());
 
-            ActivateItemAsync(new CreateTeamViewModel());
+            ActivateItemAsync(new CreatePersonViewModel());
         }
 
         public void CreateTournament()
