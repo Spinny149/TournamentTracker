@@ -15,7 +15,7 @@ namespace TrackerWPFUI.ViewModels
         private string _placeName;
         private decimal _prizeAmount;
         private double _prizePercentage;
-
+		//test git
         public int PlaceNumber
         {
 			get { return _placeNumber; }
