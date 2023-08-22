@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="TrackerWPFUI.Views.CreateTournamentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrackerWPFUI.Views"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Row 0-->
+        <TextBlock FontSize="28" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            Create Tournament
+        </TextBlock>
+
+        <!--Row 1-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0 10 10 10">
+            <TextBlock FontSize="20">General Info</TextBlock>
+            <TextBlock Margin="5 0 5 5">Tournament Name</TextBlock>
+            <TextBox x:Name="TournamentName" Margin="5 0 5 10"/>
+            
+            <TextBlock Margin="5 0 5 5">Entry Fee</TextBlock>
+            <TextBox x:Name="EntryFee" Margin="5 0 5 10"/>
+        </StackPanel>
+
+        <!--Teams Section-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin=" 0 10 0 10">
+            <TextBlock FontSize="20" >Teams Section</TextBlock>
+            <TextBlock Margin="5 0 5 10">Select Team</TextBlock>
+            <ComboBox x:Name="AvailableTeams" Margin="5 0 10 10"
+                      SelectedItem="{Binding Path=SelectedTeamToAdd, Mode=OneWayToSource}"
+                      DisplayMemberPath="TeamName"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="AddTeam" Padding="5" Margin="0 0 15 0">
+                    Add Team
+                </Button>
+                <Button x:Name="CreateTeam" Padding="5">
+                    Create Team
+                </Button>
+                <Button x:Name="RemoveTeam" Padding="5" Margin="15 0 0 0">
+                    Remove Team
+                </Button>
+
+            </StackPanel>
+            <StackPanel x:Name="SelectedTeamsIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <TextBlock Margin="0 0 0 10">Selected Teams</TextBlock>
+                <ListBox x:Name="SelectedTeams" DisplayMemberPath="TeamName" 
+                     MinHeight="30"
+                     SelectedItem="{Binding Path=SelectedTeamToRemove, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <StackPanel x:Name="AddTeamIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <ContentControl x:Name="ActiveAddTeamView"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!--Prizes Section-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Margin="10 10 0 10">
+            <TextBlock FontSize="20" >Prizes Section</TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="AddPrize" Padding="5" Margin="0 0 15 0">
+                    Create Prize
+                </Button>
+                <Button x:Name="RemovePrize" Padding="5" Margin="15 0 0 0">
+                    Remove Prize
+                </Button>
+
+            </StackPanel>
+            <StackPanel x:Name="SelectedPrizesIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <TextBlock Margin="0 0 0 10">Selected prizes</TextBlock>
+                <ListBox x:Name="SelectedPrizes" DisplayMemberPath="PrizeName" 
+                     MinHeight="30"
+                     SelectedItem="{Binding Path=SelectedPrizeToRemove, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <StackPanel x:Name="AddPrizeIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <ContentControl x:Name="ActiveAddPrizeView"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!--Row 2-->
+        <Button x:Name="CreateTournament" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="10" Margin="20 0 20 10"> 
+            Create Tournament
+        </Button>
+        
+    </Grid>
+</UserControl>
