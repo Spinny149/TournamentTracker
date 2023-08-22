@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EventAggregationProvider.cs" />
     <Compile Include="ViewModels\CreatePersonViewModel.cs" />
     <Compile Include="ViewModels\CreatePrizeViewModel.cs" />
     <Compile Include="ViewModels\CreateTeamViewModel.cs" />

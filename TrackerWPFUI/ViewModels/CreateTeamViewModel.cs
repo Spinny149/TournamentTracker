@@ -3,23 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace TrackerWPFUI.ViewModels
 {
-    public class CreateTeamViewModel : Conductor<object>
+    public class CreateTeamViewModel : Conductor<object>, IHandle<PersonModel>
     {
 		private string _teamName = "";
         private BindableCollection<PersonModel> _availableTeamMembers;
         private PersonModel _selectedTeamMemberToAdd;
         private BindableCollection<PersonModel> _selectedTeamMembers = new BindableCollection<PersonModel>();
         private PersonModel _selectedTeamMemberToRemove;
+		private bool _selectedTeamMembersIsVisible = true;
+        private bool _addPersonIsVisible = false;
 
         public CreateTeamViewModel()
         {
             AvailableTeamMembers = new BindableCollection<PersonModel>(GlobalConfig.Connection.GetPerson_All());
+			EventAggregationProvider.TrackerEventAggregator.SubscribeOnPublishedThread(this);			
         }
 
         public string TeamName
@@ -29,6 +33,26 @@ namespace TrackerWPFUI.ViewModels
 			{ 
 				_teamName = value;
 				NotifyOfPropertyChange(() => TeamName);
+			}
+		}
+
+		public bool SelectedTeamMembersIsVisible
+        {
+			get { return _selectedTeamMembersIsVisible; }
+			set 
+			{ 
+				_selectedTeamMembersIsVisible = value; 
+				NotifyOfPropertyChange(() => SelectedTeamMembersIsVisible);
+			}
+		}
+
+		public bool AddPersonIsVisible
+        {
+			get { return _addPersonIsVisible; }
+			set 
+			{ 
+				_addPersonIsVisible = value; 
+				NotifyOfPropertyChange(() => AddPersonIsVisible);
 			}
 		}
 
@@ -91,7 +115,9 @@ namespace TrackerWPFUI.ViewModels
 
         public void CreateMember()
         {
-
+			ActivateItemAsync(new CreatePersonViewModel());
+			SelectedTeamMembersIsVisible = false;
+			AddPersonIsVisible = true;
         }
 
 		public bool CanRemoveMember
@@ -147,8 +173,18 @@ namespace TrackerWPFUI.ViewModels
 
 		}
 
+        public Task HandleAsync(PersonModel message, CancellationToken cancellationToken)
+        {
+			if (!string.IsNullOrWhiteSpace(message.FullName))
+			{
+				SelectedTeamMembers.Add(message);
+				NotifyOfPropertyChange(() => CanCreateTeam);
+			}
 
-   
-
+            SelectedTeamMembersIsVisible = true;
+            AddPersonIsVisible = false;
+            
+			return Task.CompletedTask;
+        }
     }
 }

@@ -56,6 +56,13 @@ namespace TrackerWPFUI.ViewModels
             }
         }
 
+        public void CancelCreation()
+        {
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(new PersonModel());
+            this.TryCloseAsync();
+        }
+
+
         public bool CanCreatePerson(string firstName, string lastName, string email, string cellphone)
         {
             if (firstName.Length > 0 && lastName.Length > 0 && email.Length > 0 && cellphone.Length > 0)
@@ -69,7 +76,6 @@ namespace TrackerWPFUI.ViewModels
 
         }
 
-
         public void CreatePerson(string firstName, string lastName, string email, string cellphone)
         {
             PersonModel p = new PersonModel();
@@ -81,6 +87,9 @@ namespace TrackerWPFUI.ViewModels
             GlobalConfig.Connection.CreatePerson(p);
 
             //TODO: Send to back to parent and close
+
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(p);
+            this.TryCloseAsync();
 
         }
 

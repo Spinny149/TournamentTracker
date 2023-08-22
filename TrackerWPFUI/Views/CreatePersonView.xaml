@@ -39,12 +39,17 @@
                 <TextBlock Grid.Column="0" Grid.Row="3" Margin="5 0 10 10">Cell Phone</TextBlock>
                 <TextBox x:Name="CellPhone" Grid.Column="1" Grid.Row="3" Margin="0 0 5 10"/>
 
-                <!-- Row  5-->
-                <Button x:Name="CreatePerson" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Padding="10" Margin="5 5">
-                    Create Person
-                </Button>
-
-
+                <!-- Row  4-->
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5 0" HorizontalAlignment="Center">
+                    <Button x:Name="CreatePerson" Padding="10" Margin="0 0 5 0">
+                        Create Person
+                    </Button>
+                    <Button x:Name="CancelCreation" Padding="10" Background="Red" Foreground="White" 
+                            Margin="5 0 0 0">
+                        Cancle Person
+                    </Button>
+                </StackPanel>
+                
             </Grid>
         </StackPanel>
 

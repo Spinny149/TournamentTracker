@@ -29,11 +29,18 @@
                 </Button>
 
             </StackPanel>
-            <TextBlock Margin="5 10 5 10">Selected Team Members</TextBlock>
-            <ListBox x:Name="SelectedTeamMembers" DisplayMemberPath="FullName" 
-                     Margin="5 0 5 0" MinHeight="30"
+            <StackPanel x:Name="SelectedTeamMembersIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <TextBlock Margin="0 0 0 10">Selected Team Members</TextBlock>
+                <ListBox x:Name="SelectedTeamMembers" DisplayMemberPath="FullName" 
+                     MinHeight="30"
                      SelectedItem="{Binding Path=SelectedTeamMemberToRemove, Mode=TwoWay}"/>
 
+            </StackPanel>
+            
+            <StackPanel x:Name="AddPersonIsVisible" Orientation="Vertical" Margin="5 10 5 0">
+                <ContentControl x:Name="ActiveItem"/>
+            </StackPanel>
+         
             <Button x:Name="CreateTeam" Margin="5 10 5 5" Padding="5">Create Team</Button>
             
         </StackPanel>
