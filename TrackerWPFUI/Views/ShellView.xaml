@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrackerWPFUI.Views" FontSize="18"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="ShellView" Height="450" Width="800">
+        Title="ShellView" Height="450" Width="1080">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>

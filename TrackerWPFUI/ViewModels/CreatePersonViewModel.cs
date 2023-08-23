@@ -92,8 +92,5 @@ namespace TrackerWPFUI.ViewModels
             this.TryCloseAsync();
 
         }
-
-
-
     }
 }

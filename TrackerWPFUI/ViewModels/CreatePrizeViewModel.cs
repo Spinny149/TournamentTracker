@@ -56,6 +56,12 @@ namespace TrackerWPFUI.ViewModels
             }
 		}
 
+		public void CancleCreation()
+		{
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(new PrizeModel());
+            this.TryCloseAsync();
+        }
+
 		public bool CanCreatePrize(int placeNumber, string placeName, decimal prizeAmount, double prizePercentage)
 		{
 			return ValidateForm(placeNumber, placeName, prizeAmount, prizePercentage);
@@ -68,8 +74,9 @@ namespace TrackerWPFUI.ViewModels
 
 			GlobalConfig.Connection.CreatePrize(p);
 
-			//TODO: Close the form, alert calling form
-		}
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(p);
+            this.TryCloseAsync();
+        }
 
 		private bool ValidateForm(int placeNumber, string placeName, decimal prizeAmount, double prizePercentage)
         {

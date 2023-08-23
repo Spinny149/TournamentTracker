@@ -46,10 +46,16 @@
                 <TextBox x:Name="PrizePercentage" Grid.Column="1" Grid.Row="4" Margin="0 0 5 10"/>
 
                 <!-- Row  5-->
-                <Button x:Name="CreatePrize" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Padding="10" Margin="5 5"
-                        >
-                    Create Prize
-                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5 5"  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">
+                    <Button x:Name="CreatePrize" Padding="10" Margin="0 0 10 0" >
+                        Create Prize
+                    </Button>
+
+                    <Button x:Name="CancleCreation" Padding="10" Margin="10 0 0 0" Background="Red">
+                        Cancel Prize
+                    </Button>
+                </StackPanel>
+                
 
 
             </Grid>

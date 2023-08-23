@@ -137,6 +137,12 @@ namespace TrackerWPFUI.ViewModels
 
         }
 
+		public void CancleCreation()
+		{
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(new TeamModel());
+            this.TryCloseAsync();
+        }
+
         public bool CanCreateTeam
 		{
             get
@@ -168,10 +174,10 @@ namespace TrackerWPFUI.ViewModels
 
 			GlobalConfig.Connection.CreateTeam(t);
 
-			//TODO: Pass team back to parent, close form
+            EventAggregationProvider.TrackerEventAggregator.PublishOnUIThreadAsync(t);
+            this.TryCloseAsync();
 
-
-		}
+        }
 
         public Task HandleAsync(PersonModel message, CancellationToken cancellationToken)
         {
