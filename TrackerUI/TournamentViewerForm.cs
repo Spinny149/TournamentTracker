@@ -246,7 +246,7 @@ namespace TrackerUI
 
                         if (scoreValid)
                         {
-                            m.Entries[0].Score = teamTwoScore;
+                            m.Entries[1].Score = teamTwoScore;
                         }
                         else
                         {

@@ -29,21 +29,31 @@ namespace TrackerWPFUI.ViewModels
 
         }
 
+        public void LoadTournament()
+        {
+            if(SelectedTournament !=null && !String.IsNullOrWhiteSpace(SelectedTournament.TournamentName))
+            {
+                ActivateItemAsync(new TournamentViewerViewModel(SelectedTournament));
+            }
+        }
+
         public Task HandleAsync(TournamentModel message, CancellationToken cancellationToken)
         {
             //Open Tournament Viewer to the given tournament
+            ExisitingTournaments.Add(message);
+            SelectedTournament = message;
+
             return Task.CompletedTask;
         }
 
         private BindableCollection<TournamentModel> _existingTournaments;
+        private TournamentModel _selectedTournament;
 
         public BindableCollection<TournamentModel> ExisitingTournaments
         {
             get { return _existingTournaments; }
             set { _existingTournaments = value; }
         }
-
-        private TournamentModel _selectedTournament;
 
         public TournamentModel SelectedTournament
         {
@@ -52,6 +62,7 @@ namespace TrackerWPFUI.ViewModels
             { 
                 _selectedTournament = value;
                 NotifyOfPropertyChange(() => SelectedTournament);
+                LoadTournament();
             }
         }
 
