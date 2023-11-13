@@ -31,62 +31,32 @@ namespace MVCUI.Controllers
 
         // POST: People/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PersonModel p)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    //PersonModel p = new PersonModel();
 
-                return RedirectToAction("Index");
+                    //p.FirstName = collection["FirstName"];
+                    //p.LastName = collection["LastName"];
+                    //p.EmailAddress = collection["EmailAddress"];
+                    //p.CellphoneNumber = collection["CellphoneNumber"];
+
+                    GlobalConfig.Connection.CreatePerson(p);
+
+                    return RedirectToAction("Index"); 
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
                 return View();
             }
-        }
-
-        // GET: People/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //// POST: People/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: People/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: People/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        }       
     }
 }
