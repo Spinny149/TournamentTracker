@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using TrackerLibrary.Models;
 
-namespace TrackerLibrary.Models
+namespace MVCUI.Models
 {
-    /// <summary>
-    /// Represents one team
-    /// </summary>
-    public class TeamModel
+    public class TeamMVCModel
     {
-        public int Id { get; set; }
-
         /// <summary>
         /// represents team names
         /// </summary>
         [Display(Name = "Team Name")]
+        [Required]
+        [StringLength(100, MinimumLength = 2)]
         public string TeamName { get; set; }
 
         /// <summary>
         /// Represents team members
         /// </summary>
         [Display(Name = "Team Members")]
-        public List<PersonModel> TeamMembers { get; set; } = new List<PersonModel>();
+        public List<SelectListItem> TeamMembers { get; set; } = new List<SelectListItem>();
 
+        public List<string> SelectedTeamMembers { get; set; } = new List<string>();
     }
 }

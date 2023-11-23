@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TrackerLibrary.Models.TeamModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All teams</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamMembers)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @for (int i = 0; i < item.TeamMembers.Count; i++)
+            {
+                if (i == 0)
+                {
+                    @(item.TeamMembers[i].FullName);
+                }
+                else
+                {
+                    @(" | " + item.TeamMembers[i].FullName);
+                }
+            }
+        </td>
+
+    </tr>
+}
+
+</table>
