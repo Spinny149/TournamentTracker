@@ -113,6 +113,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\PrizesController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,6 +174,8 @@
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Prizes\Index.cshtml" />
+    <Content Include="Views\Prizes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,45 @@
+﻿ @model IEnumerable<TrackerLibrary.Models.PrizeModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View All Prizes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrizeAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrizePercentage)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrizeAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrizePercentage)
+        </td>
+    </tr>
+}
+
+</table>

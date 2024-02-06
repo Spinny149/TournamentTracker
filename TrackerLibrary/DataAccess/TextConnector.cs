@@ -122,6 +122,15 @@ namespace TrackerLibrary.DataAccess
             return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();      
         }
 
+        public List<PrizeModel> GetPrizes_All()
+        {
+            List<PrizeModel> output;
+
+            output = GlobalConfig.PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModels();
+
+            return output;
+        }
+
         public void UpdateMatchup(MatchupModel model)
         {
             model.UpdateMatchupToFile();

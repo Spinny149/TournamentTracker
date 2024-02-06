@@ -220,7 +220,20 @@ namespace TrackerLibrary.DataAccess
             return output;
         }
 
-        public List<TournamentModel> GetTournament_All()
+        public List<PrizeModel> GetPrizes_All()
+        {
+            List<PrizeModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<PrizeModel>("dbo.spPrizes_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+
+                public List<TournamentModel> GetTournament_All()
         {
             List<TournamentModel> output;
 
