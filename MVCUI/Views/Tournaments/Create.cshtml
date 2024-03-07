@@ -1,0 +1,77 @@
+﻿@model MVCUI.Models.TournamentMVCModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Tournament</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TournamentName, htmlAttributes: new { @class = "control-label" })
+                <div class="">
+                    @Html.EditorFor(model => model.TournamentName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TournamentName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EntryFee, htmlAttributes: new { @class = "control-label" })
+                <div class="">
+                    @Html.EditorFor(model => model.EntryFee, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EntryFee, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.EnteredTeams, htmlAttributes: new { @class = "control-label" })
+            <div class="">
+                @foreach (var item in Model.EnteredTeams)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="SelectedTeamMembers" value="@item.Value" /> @item.Text
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Prizes, htmlAttributes: new { @class = "control-label" })
+            <div class="">
+                @foreach (var item in Model.Prizes)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="SelectedPrizes" value="@item.Value" /> @item.Text
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

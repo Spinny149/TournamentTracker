@@ -115,10 +115,12 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PrizesController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="Controllers\TournamentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\TeamMVCModel.cs" />
+    <Compile Include="Models\TournamentMVCModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +178,7 @@
     <Content Include="Views\Teams\Create.cshtml" />
     <Content Include="Views\Prizes\Index.cshtml" />
     <Content Include="Views\Prizes\Create.cshtml" />
+    <Content Include="Views\Tournaments\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

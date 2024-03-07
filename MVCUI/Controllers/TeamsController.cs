@@ -37,8 +37,6 @@ namespace MVCUI.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
                 if (ModelState.IsValid && model.SelectedTeamMembers.Count > 0)
                 {
                     TeamModel t = new TeamModel();

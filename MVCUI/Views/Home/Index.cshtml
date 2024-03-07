@@ -10,7 +10,7 @@
             <section class="row" aria-labelledby="aspnetTitle">
                 <h1 id="title">Home Fun</h1>
                 <p class="lead">Track your in home Tournaments.</p>
-                <p><a href="https://asp.net" class="btn btn-primary btn-md">Create a Tournament</a></p>
+                <p>@Html.ActionLink("Create a Tournament", "Create", "Tournaments", new {area = ""}, new { @class = "btn btn-primary btn-md" }) </p>
             </section>
 
             <div class="row">
